@@ -1,0 +1,4 @@
+welcome
+password1
+correct-horse-demo
+summer2026
