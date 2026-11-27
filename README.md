@@ -19,6 +19,8 @@
 **SOC Password Auditor** is a defensive Python project for local password-strength assessment and SOC authentication-event detection. It combines practical password guidance with detection of brute-force and suspicious multi-account authentication bursts, then emits newline-delimited JSON alerts suitable for SIEM ingestion.
 
 - **Project page:** https://dsouzaglen.github.io/password-auditor/
+
+[![Open the project page — SOC Password Auditor](./visit-project.svg)](https://dsouzaglen.github.io/password-auditor/)
 - **Version:** 1.0.0 · **Python:** 3.10 or newer · **Dependencies:** none — standard library only · **License:** MIT
 
 > A portfolio and lab tool, not a replacement for enterprise password policy, breached-password services, MFA, or an identity protection platform.
@@ -44,6 +46,19 @@
 | SIEM-ready alerts | **Wazuh-friendly JSONL** alerts with rule IDs, severity levels, MITRE mappings, and response guidance |
 | Dictionary simulation | Authorized-only, bounded to **1,000,000 candidates**, against a small bundled lab wordlist |
 | Benchmark | Reproducible event-processing benchmark (`benchmark --events 10000`) |
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src="./thumb-password-audit.svg" width="100%" alt="Password Audit — 0-100 strength score, entropy, weak-pattern checks, local only" /><br />
+      <strong>Password Audit</strong> · 0–100 score · local only
+    </td>
+    <td width="50%" valign="top">
+      <img src="./thumb-detection-rules.svg" width="100%" alt="Detection Rules PA1001, PA1002, PA1003 — MITRE ATT&CK T1110, Wazuh-friendly JSONL alerts" /><br />
+      <strong>Detection Rules</strong> · PA1001–03 · MITRE T1110
+    </td>
+  </tr>
+</table>
 | Footprint | Standard-library implementation with **no runtime dependencies** |
 
 ## Detection logic
