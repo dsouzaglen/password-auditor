@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="24" viewBox="0 0 960 24" role="img" aria-label="Animated SOC divider">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#00e676" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#00e676"/>
+      <stop offset="1" stop-color="#00a0e3" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="11" width="960" height="2" fill="url(#g)"/>
+  <circle cx="20" cy="12" r="5" fill="#00e676">
+    <animate attributeName="cx" values="20;940;20" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;.4;1" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="20" cy="12" r="5" fill="#ff5f57">
+    <animate attributeName="cx" values="940;20;940" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".4;1;.4" dur="6s" repeatCount="indefinite"/>
+  </circle>
+</svg>

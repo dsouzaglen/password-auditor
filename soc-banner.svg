@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="960" height="380" viewBox="0 0 960 380"
+     role="img" aria-labelledby="title description">
+  <title id="title">SOC Password Auditor — defensive password audit and brute-force detection</title>
+  <desc id="description">
+    A password audit flows through authentication-event detection into a
+    Wazuh-friendly SIEM alert. Each station lights up as the alert passes.
+    The panel on the right shows the three detection rules, PA1001 to PA1003.
+  </desc>
+
+  <defs>
+    <linearGradient id="space" x2="100%" y2="100%">
+      <stop stop-color="#050d14"/>
+      <stop offset=".55" stop-color="#0a1a12"/>
+      <stop offset="1" stop-color="#081822"/>
+    </linearGradient>
+
+    <linearGradient id="spectrum">
+      <stop stop-color="#00e676"/>
+      <stop offset=".5" stop-color="#8ce5d0"/>
+      <stop offset="1" stop-color="#00a0e3"/>
+    </linearGradient>
+
+    <linearGradient id="scanGrad" x1="0" x2="1">
+      <stop offset="0" stop-color="#00e676" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#00e676" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#00e676" stop-opacity="0"/>
+    </linearGradient>
+
+    <radialGradient id="nodeGlow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#00e676" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#00e676" stop-opacity="0"/>
+    </radialGradient>
+
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#1d3a4a" stroke-width="1" opacity=".45"/>
+    </pattern>
+
+    <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <filter id="glowBig" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+
+    <clipPath id="frame">
+      <rect width="960" height="380" rx="20"/>
+    </clipPath>
+
+    <!-- The alert and the packets share this route. -->
+    <path id="route"
+          d="M-45 236
+             C35 236 88 210 160 210
+             C260 210 292 280 362 258
+             S410 194 460 194
+             C545 194 550 268 619 253
+             S686 202 744 202"/>
+
+    <g id="gate" fill="none" stroke="currentColor">
+      <circle r="24" opacity=".5"/>
+      <circle r="32" stroke-width="3" stroke-dasharray="41 13 5 8">
+        <animateTransform attributeName="transform" type="rotate"
+                          from="0" to="360" dur="9s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="39" stroke-width="1.5" stroke-dasharray="7 23">
+        <animateTransform attributeName="transform" type="rotate"
+                          from="360" to="0" dur="15s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <g id="packet">
+      <circle r="7" fill="#00e676" filter="url(#glow)"/>
+      <circle r="3.5" fill="#eafff3"/>
+    </g>
+    <g id="alertPacket">
+      <circle r="7" fill="#ff5f57" filter="url(#glow)"/>
+      <circle r="3.5" fill="#ffe9e7"/>
+    </g>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="960" height="380" fill="url(#space)"/>
+    <rect width="960" height="380" fill="url(#grid)"/>
+
+    <!-- Sweeping scan line across the whole banner -->
+    <rect x="0" y="0" width="60" height="380" fill="url(#scanGrad)" opacity=".35">
+      <animate attributeName="x" values="-60;960;-60" dur="8s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Flashing DEFENSIVE badge -->
+    <g transform="translate(824 22)">
+      <rect x="0" y="0" width="114" height="26" rx="13" fill="#ff5f57" opacity=".18"/>
+      <rect x="0" y="0" width="114" height="26" rx="13" fill="none" stroke="#ff5f57" stroke-width="1.5">
+        <animate attributeName="opacity" values="1;.25;1" dur="1.2s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="16" cy="13" r="5" fill="#ff5f57">
+        <animate attributeName="opacity" values="1;.2;1" dur="1.2s" repeatCount="indefinite"/>
+      </circle>
+      <text x="28" y="18" fill="#ff8a80" font-family="monospace" font-size="13" font-weight="700" letter-spacing="1">DEFENSIVE</text>
+    </g>
+    <g transform="translate(22 22)">
+      <rect x="0" y="0" width="150" height="26" rx="13" fill="#00e676" opacity=".12"/>
+      <rect x="0" y="0" width="150" height="26" rx="13" fill="none" stroke="#00e676" stroke-width="1.5">
+        <animate attributeName="opacity" values=".4;1;.4" dur="2s" repeatCount="indefinite"/>
+      </rect>
+      <text x="12" y="18" fill="#00e676" font-family="monospace" font-size="13" font-weight="700" letter-spacing="1">● DEFENSIVE LAB</text>
+    </g>
+
+    <g text-anchor="middle">
+      <text x="480" y="43" fill="#8ce5d0" font-family="monospace"
+            font-size="15" letter-spacing="4">DEFENSIVE PYTHON · SOC AUTHENTICATION DETECTION</text>
+      <text x="480" y="108" fill="url(#spectrum)" font-family="sans-serif"
+            font-size="52" font-weight="800">SOC Password Auditor</text>
+      <text x="480" y="138" fill="#9fb3c8" font-family="monospace"
+            font-size="16" letter-spacing="2">PASSWORD AUDIT · BRUTE-FORCE DETECTION · SIEM ALERTS</text>
+    </g>
+
+    <!-- Neon rail with pulsing glow -->
+    <g fill="none" stroke-linecap="round">
+      <use href="#route" stroke="#00e676" stroke-width="9" filter="url(#glowBig)">
+        <animate attributeName="opacity" values=".25;.6;.25" dur="2.4s" repeatCount="indefinite"/>
+      </use>
+      <use href="#route" stroke="#00e676" stroke-width="2.5" opacity=".9"/>
+    </g>
+
+    <!-- Travelling alert packets — 3 green + 1 red alert -->
+    <use href="#packet">
+      <animateMotion dur="3s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#route"/>
+      </animateMotion>
+    </use>
+    <use href="#packet" opacity=".8">
+      <animateMotion dur="3s" begin="-1s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#route"/>
+      </animateMotion>
+    </use>
+    <use href="#packet" opacity=".6">
+      <animateMotion dur="3s" begin="-2s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#route"/>
+      </animateMotion>
+    </use>
+    <use href="#alertPacket">
+      <animateMotion dur="3s" begin="-1.5s" repeatCount="indefinite" rotate="auto">
+        <mpath href="#route"/>
+      </animateMotion>
+    </use>
+
+    <!-- Stations — glowing, pulsing halos -->
+    <g font-family="monospace" font-size="15" text-anchor="middle">
+      <g transform="translate(160 210)" color="#00e676">
+        <circle r="52" fill="url(#nodeGlow)">
+          <animate attributeName="r" values="42;58;42" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".7;.2;.7" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <use href="#gate"/>
+        <text y="58" fill="#e9eff6">Password audit</text>
+        <text y="78" fill="#7d90a3">entropy · 0–100 score</text>
+      </g>
+      <g transform="translate(460 194)" color="#8ce5d0">
+        <circle r="52" fill="url(#nodeGlow)">
+          <animate attributeName="r" values="42;58;42" dur="2s" begin="-.7s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".7;.2;.7" dur="2s" begin="-.7s" repeatCount="indefinite"/>
+        </circle>
+        <use href="#gate"/>
+        <text y="58" fill="#e9eff6">Auth events</text>
+        <text y="78" fill="#7d90a3">sliding-window rules</text>
+      </g>
+      <g transform="translate(744 202)" color="#00a0e3">
+        <circle r="52" fill="url(#nodeGlow)">
+          <animate attributeName="r" values="42;58;42" dur="2s" begin="-1.4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values=".7;.2;.7" dur="2s" begin="-1.4s" repeatCount="indefinite"/>
+        </circle>
+        <use href="#gate"/>
+        <text y="58" fill="#e9eff6">SIEM alert</text>
+        <text y="78" fill="#7d90a3">JSONL · MITRE T1110</text>
+      </g>
+    </g>
+
+    <!-- Flashing alert badge over detection -->
+    <g transform="translate(460 138)">
+      <rect x="-34" y="-11" width="68" height="20" rx="10" fill="#ff5f57">
+        <animate attributeName="opacity" values="1;.3;1" dur="1s" repeatCount="indefinite"/>
+      </rect>
+      <text x="0" y="4" text-anchor="middle" fill="#fff" font-family="monospace" font-size="11" font-weight="700">⚠ ALERT</text>
+    </g>
+
+    <!-- Detection-rules panel — animated bars -->
+    <g transform="translate(786 236)">
+      <rect x="0" y="0" width="150" height="118" rx="12" fill="#0a1622" stroke="#1d3a4a"/>
+      <text x="14" y="22" fill="#8ce5d0" font-family="monospace" font-size="12">RULES · PA1001–03</text>
+      <g>
+        <rect x="16" y="78" width="26" height="28" fill="#00e676">
+          <animate attributeName="height" values="8;28;8" dur="2s" repeatCount="indefinite"/>
+          <animate attributeName="y" values="98;78;98" dur="2s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="50" y="62" width="26" height="44" fill="#8ce5d0">
+          <animate attributeName="height" values="18;44;18" dur="2s" begin="-.35s" repeatCount="indefinite"/>
+          <animate attributeName="y" values="88;62;88" dur="2s" begin="-.35s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="84" y="46" width="26" height="60" fill="#00a0e3">
+          <animate attributeName="height" values="24;60;24" dur="2s" begin="-.7s" repeatCount="indefinite"/>
+          <animate attributeName="y" values="82;46;82" dur="2s" begin="-.7s" repeatCount="indefinite"/>
+        </rect>
+        <rect x="118" y="88" width="16" height="18" fill="#ff5f57">
+          <animate attributeName="opacity" values="1;.3;1" dur="1s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+      <text x="14" y="112" fill="#9fb3c8" font-family="monospace" font-size="10">5/60s · 10/60s · 10/60s</text>
+    </g>
+
+    <text x="480" y="352" text-anchor="middle" fill="#7d90a3" font-family="monospace" font-size="14">Python 3.10+ · standard library only · no runtime dependencies · MIT</text>
+  </g>
+</svg>
