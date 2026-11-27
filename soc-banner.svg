@@ -84,7 +84,7 @@
 
     <!-- Sweeping scan line across the whole banner -->
     <rect x="0" y="0" width="60" height="380" fill="url(#scanGrad)" opacity=".35">
-      <animate attributeName="x" values="-60;960;-60" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="x" values="-60;960;-60" dur="5s" repeatCount="indefinite"/>
     </rect>
 
     <!-- Flashing DEFENSIVE badge -->
